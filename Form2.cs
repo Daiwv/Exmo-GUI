@@ -3,7 +3,6 @@ using System.Security.Cryptography;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace Exmo
 {
@@ -38,10 +37,17 @@ namespace Exmo
 
                     AES.Mode = CipherMode.CBC;
 
-                    using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
+                    try
                     {
-                        cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
-                        cs.Close();
+                        using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
+                        {
+                            cs.Write(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length);
+                            cs.Close();
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Bad password!");
                     }
                     decryptedBytes = ms.ToArray();
                 }
@@ -50,39 +56,36 @@ namespace Exmo
             return decryptedBytes;
         }
 
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        void Login()
         {
             byte[] bytesToBeDecrypted = Convert.FromBase64String(File.ReadAllText("exmo.dat"));
             byte[] passwordBytes = Encoding.UTF8.GetBytes(textBox1.Text);
             passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
+            byte[] bytesDecrypted = Decrypt(bytesToBeDecrypted, passwordBytes);
+            string output = Encoding.UTF8.GetString(bytesDecrypted);
+            string[] output2 = output.Split(',');
 
-            try {
-                byte[] bytesDecrypted = Decrypt(bytesToBeDecrypted, passwordBytes);
-                string output = Encoding.UTF8.GetString(bytesDecrypted);
-                string[] output2 = output.Split(',');
+            if (output2.Length == 4)
+            {
+                Username = output2[0].ToString();
+                ApiKey = output2[1].ToString();
+                ApiSec = output2[2].ToString();
 
-                if (output2.Length == 4)
-                {
-                    Username = output2[0].ToString();
-                    ApiKey = output2[1].ToString();
-                    ApiSec = output2[2].ToString();
-
-                    this.Hide();
-                    Form4 client = new Form4();
-                    client.ShowDialog();
-                    this.Close();
-
-                }
-
+                this.Hide();
+                Form4 client = new Form4();
+                client.ShowDialog();
+                this.Close();
             }
-            catch {
-                MessageBox.Show("Bad password!");
-            }
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            Login();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Login();
         }
     }
 }

@@ -58,13 +58,14 @@ namespace Exmo
             return rezult;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        void Register()
         {
-            if(textBox1.Text.Length > 3 && textBox2.Text.Length > 10 && textBox3.Text.Length > 10 && textBox4.Text.Length > 5) {
+            if (textBox1.Text.Length > 3 && textBox2.Text.Length > 10 && textBox3.Text.Length > 10 && textBox4.Text.Length > 5)
+            {
 
                 byte[] bytesToBeEncrypted = Encoding.UTF8.GetBytes(textBox1.Text + "," + textBox2.Text + "," + textBox3.Text + "," + GenString());
                 byte[] passwordBytes = Encoding.UTF8.GetBytes(textBox4.Text);
-                
+
                 passwordBytes = SHA256.Create().ComputeHash(passwordBytes);
 
                 byte[] bytesEncrypted = Encrypt(bytesToBeEncrypted, passwordBytes);
@@ -77,9 +78,21 @@ namespace Exmo
                 Form2 login = new Form2();
                 login.ShowDialog();
                 this.Close();
-            } else {
+            }
+            else
+            {
                 MessageBox.Show("Check you input!");
             }
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            Register();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Register();
         }
     }
 }
