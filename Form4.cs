@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -138,6 +139,51 @@ namespace Exmo
         {
             Form9 client = new Form9();
             client.ShowDialog();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            Form10 client = new Form10();
+            client.ShowDialog();
+        }
+
+        private void panel12_Click(object sender, EventArgs e)
+        {
+            Form10 client = new Form10();
+            client.ShowDialog();
+        }
+
+        void GetPrice()
+        {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+            string price = new WebClient().DownloadString("https://api.exmo.com/v1/ticker/");
+            string[] tm = price.Split('"');
+
+            int c_name = 1;
+            int c_price0 = 5;
+            int c_price1 = 9;
+
+            for (int i = 0; i != 45; i++)
+            {
+                dataGridView1.Rows.Add(tm[c_name], tm[c_price0], tm[c_price1]);
+                c_name += 36;
+                c_price0 += 36;
+                c_price1 += 36;
+            }
+
+            price = null;
+            tm = null;
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            GetPrice();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            GetPrice();
         }
     }
 }

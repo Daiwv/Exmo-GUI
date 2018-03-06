@@ -43,7 +43,8 @@
             this.webBrowser1.ScrollBarsEnabled = false;
             this.webBrowser1.Size = new System.Drawing.Size(667, 497);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Url = new System.Uri("https://encrypted.google.com", System.UriKind.Absolute);
+            this.webBrowser1.Url = new System.Uri("https://exmo.com/ctrl/getTemplate?name=main_big2&para=BCH_BTC&period=week&lang=en" +
+        "", System.UriKind.Absolute);
             // 
             // comboBox1
             // 
