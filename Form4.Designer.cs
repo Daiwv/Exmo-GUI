@@ -519,6 +519,7 @@
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(192, 53);
             this.panel16.TabIndex = 25;
+            this.panel16.Click += new System.EventHandler(this.panel16_Click);
             // 
             // label7
             // 
@@ -530,6 +531,7 @@
             this.label7.Size = new System.Drawing.Size(90, 27);
             this.label7.TabIndex = 10;
             this.label7.Text = "Balance";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // panel15
             // 
@@ -594,6 +596,7 @@
             this.label10.Size = new System.Drawing.Size(162, 27);
             this.label10.TabIndex = 10;
             this.label10.Text = "Withdraw crypt";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // panel12
             // 
@@ -623,6 +626,7 @@
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(192, 53);
             this.panel11.TabIndex = 24;
+            this.panel11.Click += new System.EventHandler(this.panel11_Click);
             // 
             // label5
             // 
@@ -634,6 +638,7 @@
             this.label5.Size = new System.Drawing.Size(114, 27);
             this.label5.TabIndex = 9;
             this.label5.Text = "Addresses";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Form4
             // 

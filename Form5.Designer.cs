@@ -59,7 +59,7 @@
             this.comboBox1.Size = new System.Drawing.Size(80, 21);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.Tag = "";
-            this.comboBox1.Text = "-SELECT-";
+            this.comboBox1.Text = "- PERIOD -";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
@@ -116,7 +116,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(80, 21);
             this.comboBox2.TabIndex = 2;
-            this.comboBox2.Text = "-SELECT-";
+            this.comboBox2.Text = "- PAIR -";
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // Form5

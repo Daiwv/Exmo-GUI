@@ -109,5 +109,35 @@ namespace Exmo
             Form5 client = new Form5();
             client.ShowDialog();
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Form7 client = new Form7();
+            client.ShowDialog();
+        }
+
+        private void panel11_Click(object sender, EventArgs e)
+        {
+            Form7 client = new Form7();
+            client.ShowDialog();
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+            Form8 client = new Form8();
+            client.ShowDialog();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Form9 client = new Form9();
+            client.ShowDialog();
+        }
+
+        private void panel16_Click(object sender, EventArgs e)
+        {
+            Form9 client = new Form9();
+            client.ShowDialog();
+        }
     }
 }
