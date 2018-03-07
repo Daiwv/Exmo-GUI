@@ -37,7 +37,104 @@ namespace Exmo
             }
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        void GetPrice()
+        {
+            dataGridView2.Rows.Clear();
+            dataGridView2.Refresh();
+            string price = new WebClient().DownloadString("https://api.exmo.com/v1/ticker/");
+            string[] tm = price.Split('"');
+
+            int c_name = 1;
+            int c_price0 = 5;
+            int c_price1 = 9;
+
+            for (int i = 0; i != 45; i++)
+            {
+                dataGridView2.Rows.Add(tm[c_name], tm[c_price0], tm[c_price1]);
+                c_name += 36;
+                c_price0 += 36;
+                c_price1 += 36;
+            }
+
+            price = null;
+            tm = null;
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            GetPrice();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            GetPrice();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Form9 client = new Form9();
+            client.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form7 client = new Form7();
+            client.ShowDialog();
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form10 client = new Form10();
+            client.ShowDialog();
+            this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form9 client = new Form9();
+            client.ShowDialog();
+            this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form5 client = new Form5();
+            client.ShowDialog();
+            this.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form6 client = new Form6();
+            client.ShowDialog();
+            this.Close();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form8 client = new Form8();
+            client.ShowDialog();
+            this.Close();
+        }
+
+        private void label11_Click_1(object sender, EventArgs e)
+        {
+            Buy();
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+            Sell();
+        }
+
+        private void checkBox2_CheckedChanged_1(object sender, EventArgs e)
         {
             if (checkBox2.Checked)
             {
@@ -66,124 +163,9 @@ namespace Exmo
             Buy();
         }
 
-        private void label11_Click(object sender, EventArgs e)
-        {
-            Buy();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-            Sell();
-        }
-
         private void panel7_Click(object sender, EventArgs e)
         {
             Sell();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form5 client = new Form5();
-            client.ShowDialog();
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-            Form6 client = new Form6();
-            client.ShowDialog();
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-            Form5 client = new Form5();
-            client.ShowDialog();
-        }
-
-        private void panel14_Click(object sender, EventArgs e)
-        {
-            Form6 client = new Form6();
-            client.ShowDialog();
-        }
-
-        private void panel15_Click(object sender, EventArgs e)
-        {
-            Form5 client = new Form5();
-            client.ShowDialog();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-            Form7 client = new Form7();
-            client.ShowDialog();
-        }
-
-        private void panel11_Click(object sender, EventArgs e)
-        {
-            Form7 client = new Form7();
-            client.ShowDialog();
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-            Form8 client = new Form8();
-            client.ShowDialog();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-            Form9 client = new Form9();
-            client.ShowDialog();
-        }
-
-        private void panel16_Click(object sender, EventArgs e)
-        {
-            Form9 client = new Form9();
-            client.ShowDialog();
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-            Form10 client = new Form10();
-            client.ShowDialog();
-        }
-
-        private void panel12_Click(object sender, EventArgs e)
-        {
-            Form10 client = new Form10();
-            client.ShowDialog();
-        }
-
-        void GetPrice()
-        {
-            dataGridView1.Rows.Clear();
-            dataGridView1.Refresh();
-            string price = new WebClient().DownloadString("https://api.exmo.com/v1/ticker/");
-            string[] tm = price.Split('"');
-
-            int c_name = 1;
-            int c_price0 = 5;
-            int c_price1 = 9;
-
-            for (int i = 0; i != 45; i++)
-            {
-                dataGridView1.Rows.Add(tm[c_name], tm[c_price0], tm[c_price1]);
-                c_name += 36;
-                c_price0 += 36;
-                c_price1 += 36;
-            }
-
-            price = null;
-            tm = null;
-        }
-
-        private void Form4_Load(object sender, EventArgs e)
-        {
-            GetPrice();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            GetPrice();
         }
     }
 }
