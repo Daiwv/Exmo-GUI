@@ -1,5 +1,6 @@
 ![Screenshot](https://i.imgur.com/r1pPPTo.png)
-[See all image](https://imgur.com/a/yFBVq)
+
+- [See all image](https://imgur.com/a/yFBVq)
 
 # Exmo-GUI
 Desktop client of Exmo.
